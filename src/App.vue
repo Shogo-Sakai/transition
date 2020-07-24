@@ -5,7 +5,7 @@
     <p v-if="show">hello</p>
     </transition>
     <transition name="slide">
-      <p v-if="show">bye</p>
+      <p v-show="show">bye</p>
     </transition>
   </div>
 </template>
@@ -21,21 +21,27 @@ export default {
 </script>
 
 <style scoped>
+.slide-enter,
+.slide-leave-to{
+  opacity: 0;
+}
 .slide-enter-active{
-  animation: slide-in 0.5s;
+  animation: slide-in 5s;
+  transition: opacity 5s;
 }
 .slide-leave-active{
   animation: slide-in 0.5s reverse;
+  transition: opacity 5s;
 }
 
 @keyframes slide-in{
   from{
     transform: translateX(100px);
-    opacity: 0;
+    /* opacity: 0; */
   }
   to{
     transform: translateX(0);
-    opacity: 1;
+    /* opacity: 1; */
   }
 }
 
